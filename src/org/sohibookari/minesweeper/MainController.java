@@ -20,9 +20,8 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fieldPane.setPrefWidth(new Constraints().getFieldPaneWidth());
-        fieldPane.setPrefHeight(new Constraints().getFieldHeight());
+        fieldPane.setPrefHeight(new Constraints().getFieldPaneHeight());
         fieldPane.setHgap(new Constraints().getGridWidth());
         fieldPane.setVgap(new Constraints().getGridHeight());
-
     }
 }

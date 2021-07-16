@@ -14,19 +14,23 @@ public class MineCellView {
         makeOriginal();
     }
 
-    final void makeOriginal() {
+    public void makeOriginal() {
         rect.setFill(Color.BLUE);
     }
 
-    final void makeFlagged() {
+    public void makeFlagged() {
         rect.setFill(Color.YELLOW);
     }
 
-    final void makeExploded() {
+    public void makeExploded() {
         rect.setFill(Color.RED);
     }
 
-    final void makeRevealed() {
+    public void makeRevealed() {
         rect.setFill(Color.GRAY);
+    }
+
+    public Rectangle getRect() {
+        return rect;
     }
 }

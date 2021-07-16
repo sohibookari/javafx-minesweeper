@@ -19,7 +19,6 @@ public class Minesweeper extends Application {
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("MainPane.fxml"));
 
-
         primaryStage.setTitle("Minesweeper");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
