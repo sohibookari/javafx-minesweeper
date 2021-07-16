@@ -6,14 +6,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.canvas.Canvas?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.sohibookari.minesweeper.MainController"
             prefHeight="400.0" prefWidth="600.0">
     <top>
-        <Label fx:id="label" text="GAME STATUS" textAlignment="CENTER" />
+        <HBox fx:id="labelContainer" alignment="CENTER">
+            <Label fx:id="statusLabel" text="GAME STATUS" textAlignment="CENTER" />
+        </HBox>
     </top>
     <center>
-
+        <HBox fx:id="fieldContainer" alignment="CENTER">
+            <GridPane fx:id="fieldPane" alignment="CENTER" gridLinesVisible="true" />
+        </HBox>
     </center>
 </BorderPane>

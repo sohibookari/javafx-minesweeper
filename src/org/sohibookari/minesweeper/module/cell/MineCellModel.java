@@ -1,13 +1,13 @@
 package org.sohibookari.minesweeper.module.cell;
 
 
-public class MineCell {
-    int cellId;
-    int aroundMines;
-    CellStatus status;
+public class MineCellModel {
+    private Coords coords;
+    private CellStatus status;
+    private int aroundMines;
 
-    public MineCell(int cellId, CellStatus cellStatus) {
-        this.cellId = cellId;
+    public MineCellModel(int cellId, CellStatus cellStatus) {
+        coords = new Coords(cellId);
         status = cellStatus;
         aroundMines = 0;
     }
@@ -43,5 +43,9 @@ public class MineCell {
         else {
             throw new UnsupportedOperationException("Can not reveal a cell has marked.");
         }
+    }
+
+    Coords getCoords() {
+        return coords;
     }
 }
