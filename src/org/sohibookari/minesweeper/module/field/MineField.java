@@ -6,10 +6,10 @@ import org.sohibookari.minesweeper.module.cell.Coords;
 import org.sohibookari.minesweeper.module.cell.MineCell;
 
 public class MineField {
-    int fieldWidth;
-    int fieldHeight;
-    int flaggedMine;
-    MineCell[][] fieldData;
+    private int fieldWidth;
+    private int fieldHeight;
+    private int flaggedMine;
+    private MineCell[][] fieldData;
 
     private final Constraints constraints = new Constraints();
     private final int[] offsetY = {-1, 0, 1};
@@ -20,20 +20,7 @@ public class MineField {
         fieldHeight = constraints.getFieldHeight();
     }
 
-    private void check() {
-        // check field data.
-        {
-            for (MineCell[] fieldRow : fieldData) {
-                for (MineCell cell : fieldRow) System.out.println(cell.getStatus());
-            }
-        }
-    }
-
-    private MineCell getCellByCoords(Coords coords) {
-        return fieldData[coords.getY()][coords.getX()];
-    }
-
-    void initialize() {
+    public void initialize() {
 
         fieldData = new MineCell[fieldHeight][fieldWidth];
         // initialize field data with EMPTY cells.
@@ -60,26 +47,51 @@ public class MineField {
         }
 
         // initialize cells' around mines.
-        for (int i = 0; i < constraints.getMaxIndex(); i++) {
+        for (int i = 0; i <= constraints.getMaxIndex(); i++) {
             MineCell mc = getCellByCoords(new Coords(i));
             int mineCount = 0;
-            for (int j = 0; j < offsetY.length; j++) {
-                for (int k = 0; k < offsetX.length; k++) {
-                    if ( j == 0 && k == 0 ) continue;
-                    int newY = mc.getCoords().getY() + j;
-                    int newX = mc.getCoords().getX() + i;
-                    if (    newX < 0 ||
-                            newX > constraints.getFieldWidth() ||
+            for (int oy : offsetY) {
+                for (int ox : offsetX) {
+                    if (oy == 0 && ox == 0) continue;
+                    int newY = mc.getCoords().getY() + oy;
+                    int newX = mc.getCoords().getX() + ox;
+                    if (newX < 0 ||
+                            newX > constraints.getFieldWidth() - 1 ||
                             newY < 0 ||
-                            newY > constraints.getFieldHeight() ) {
+                            newY > constraints.getFieldHeight() - 1) {
                         continue;
                     }
-                    mineCount++;
+                    if (getCellByCoords(new Coords(newX, newY)).getStatus() == CellStatus.MINED) mineCount++;
                 }
             }
             mc.setAroundMines(mineCount);
         }
 
+    }
+
+    public void check() {
+        // check field data.
+        {
+            for (MineCell[] fieldRow : fieldData) {
+                for (MineCell cell : fieldRow) System.out.println(cell.getStatus());
+            }
+        }
+    }
+
+    public void revealAll() {
+        for (int i = 0; i <= constraints.getMaxIndex(); i++) {
+            MineCell mc = getCellByCoords(new Coords(i));
+            if (mc.getStatus() == CellStatus.EMPTY) {
+                mc.reveal();
+            } else if (mc.getStatus() == CellStatus.MINED) {
+                mc.expose();
+            }
+        }
+
+    }
+
+    public MineCell getCellByCoords(Coords coords) {
+        return fieldData[coords.getY()][coords.getX()];
     }
 
      public static void main(String[] args) {

@@ -1,8 +1,8 @@
 package org.sohibookari.minesweeper.module;
 
 public class Constraints {
-    private int gridWidth = 10;
-    private int gridHeight = 10;
+    private int gridWidth = 20;
+    private int gridHeight = 20;
     private int fieldWidth = 20;
     private int fieldHeight = 20;
     private int totalMines = 60;
