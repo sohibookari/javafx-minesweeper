@@ -1,4 +1,4 @@
-package org.sohibookari.minesweeper.module.cell;
+package org.kiteki.minesweeper.module.cell;
 
 
 public class MineCell {
@@ -14,8 +14,17 @@ public class MineCell {
         locationInfo = String.format("\n\tat Cell (%d,%d : %d)", coords.getX(), coords.getY(), coords.getCellId());
     }
 
+    public void empty() throws UnsupportedOperationException {
+        if (status == CellStatus.EMPTY_FLAGGED) {
+            status = CellStatus.EMPTY;
+        }
+        else {
+            throw new UnsupportedOperationException("Can only empty the cell with FALGGED status." + locationInfo);
+        }
+    }
+
     public void mine() throws UnsupportedOperationException {
-        if (status == CellStatus.EMPTY) {
+        if (status == CellStatus.EMPTY || status == CellStatus.MINED_FLAGGED) {
             status = CellStatus.MINED;
         }
         else {

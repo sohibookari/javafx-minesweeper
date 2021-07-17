@@ -1,10 +1,10 @@
-package org.sohibookari.minesweeper.module.cell;
+package org.kiteki.minesweeper.module.cell;
 
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import org.sohibookari.minesweeper.module.Constraints;
+import org.kiteki.minesweeper.module.Constraints;
 
 
 public class MineCellRender {

@@ -1,9 +1,9 @@
-package org.sohibookari.minesweeper.module.field;
+package org.kiteki.minesweeper.module.field;
 
-import org.sohibookari.minesweeper.module.Constraints;
-import org.sohibookari.minesweeper.module.cell.CellStatus;
-import org.sohibookari.minesweeper.module.cell.Coords;
-import org.sohibookari.minesweeper.module.cell.MineCell;
+import org.kiteki.minesweeper.module.cell.MineCell;
+import org.kiteki.minesweeper.module.Constraints;
+import org.kiteki.minesweeper.module.cell.CellStatus;
+import org.kiteki.minesweeper.module.cell.Coords;
 
 public class MineField {
     private int fieldWidth;
@@ -18,6 +18,7 @@ public class MineField {
     public MineField() {
         fieldWidth = constraints.getFieldWidth();
         fieldHeight = constraints.getFieldHeight();
+        flaggedMine = 0;
     }
 
     public void initialize() {
@@ -92,6 +93,18 @@ public class MineField {
 
     public MineCell getCellByCoords(Coords coords) {
         return fieldData[coords.getY()][coords.getX()];
+    }
+
+    public int getFlaggedMine() {
+        return flaggedMine;
+    }
+
+    public void flagAMine() {
+        flaggedMine++;
+    }
+
+    public void unFlagAMine() {
+        flaggedMine--;
     }
 
      public static void main(String[] args) {

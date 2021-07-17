@@ -1,6 +1,6 @@
-package org.sohibookari.minesweeper.module.cell;
+package org.kiteki.minesweeper.module.cell;
 
-import org.sohibookari.minesweeper.module.Constraints;
+import org.kiteki.minesweeper.module.Constraints;
 
 public class Coords {
     private int x;
