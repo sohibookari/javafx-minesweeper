@@ -1,0 +1,6 @@
+!org.kiteki.minesweeper.module.Config
+fieldHeight: 20
+fieldWidth: 20
+gridHeight: 20
+gridWidth: 20
+totalMines: 60

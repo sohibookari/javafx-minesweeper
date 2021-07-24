@@ -142,8 +142,6 @@ class MineFieldController {
 
 
 public class MainPaneController implements Initializable {
-    private Stage primaryStage;
-    private Scene settingScene;
 
     @FXML
     public Label statusLabel;

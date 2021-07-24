@@ -59,6 +59,7 @@ public class SettingPaneController implements Initializable {
             ioException.printStackTrace();
         }
 
+        primaryStage.setTitle("扫雷");
         primaryStage.setScene(new Scene(root));
     }
 
