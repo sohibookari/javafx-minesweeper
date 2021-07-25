@@ -26,8 +26,8 @@
             <TextField fx:id="mField" editable="false" />
         </HBox>
         <HBox alignment="CENTER">
-            <Button text="Submit" onAction="#handleSubmit" />
-            <Button text="Cancel" onAction="#handleCancel" />
+            <Button text="开始" onAction="#handleSubmit" />
+            <Button text="取消" onAction="#handleCancel" />
         </HBox>
     </VBox>
 </AnchorPane>
